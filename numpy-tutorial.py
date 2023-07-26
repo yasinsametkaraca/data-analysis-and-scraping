@@ -79,6 +79,7 @@ print(numbers1[1:, 0:2])  # [[4 5] [7 8]] # Choose from row index 1 to the end. 
 print(numbers1[-1, :])  # [7 8 9] # Last row. All columns
 print(numbers1[-1, 1:])  # [8 9] # Last row. From column index 1 to the end
 print(numbers1[-1, 1])  # 8 # Last row. Second column
+print(numbers1[0])  # [1 2 3] # First row. All columns
 
 numbers2 = np.arange(1, 10)
 numbers3 = numbers2.copy()  # Copy the array. Value type assignment. Both variables point to different arrays.
@@ -91,3 +92,41 @@ numbers5 = numbers4  # Assign the array to another variable. Both variables poin
 numbers5[0] = 10
 print(numbers4)  # [10  2  3  4  5  6  7  8  9]
 print(numbers5)  # [10  2  3  4  5  6  7  8  9]
+
+numbers6 = np.random.randint(10, 100, 5)  # 5 random integers between 10 and 100
+numbers7 = np.random.randint(10, 100, 5)  # 5 random integers between 10 and 100
+print(f"number6 {numbers6}")
+print(numbers7)
+print(numbers6 + numbers7)  # Add the elements of the arrays with the same index
+print(numbers6 - numbers7)  # Subtract the elements of the arrays with the same index
+print(numbers6 * numbers7)  # Multiply the elements of the arrays with the same index
+print(numbers6 + 10)  # Add 10 to each element
+print(np.sin(numbers6))  # Calculate the sine of each element
+print(np.cos(numbers6))  # Calculate the cosine of each element
+print(np.log(numbers6))  # Calculate the natural logarithm of each element
+print(np.sqrt(numbers6))  # Calculate the square root of each element
+print(np.square(numbers6))  # Calculate the square of each element
+print(np.power(numbers6, 2))  # Calculate the power of each element
+
+numbers8 = np.random.randint(10, 100, 6)
+print(numbers8)
+print(numbers8 > 50)  # for example: [False False False  True  True  True] # Compare each element with 50
+print(numbers8[numbers8 > 50])  # [51 52 53] # Get the elements that are greater than 50
+print(numbers8 % 2 == 0)  # [False  True False  True False  True] # Get the even numbers. Compare each element with 2
+print(numbers8[numbers8 % 2 == 0])  # [52 54 56] # Get the even numbers.
+print(numbers8[(numbers8 % 2 == 0) & (numbers8 > 50)])  # [52 54 56] # Get the even numbers that are greater than 50
+print(numbers8[(numbers8 % 2 == 0) | (numbers8 > 50)])  # [51 52 53 54 55 56] # Get the even numbers or the numbers that are greater than 50
+result = numbers8 > 50
+print(numbers8[result])  # [] # Get the elements that are greater than 50
+
+multinumber8 = numbers8.reshape(2, 3)  # Reshape the array to 2 rows and 3 columns
+multinumber9 = np.random.randint(10, 100, 6).reshape(2, 3)  # Reshape the array to 2 rows and 3 columns
+print(multinumber8)
+print(multinumber9)
+print(np.vstack((multinumber8, multinumber9)))  # Stack the arrays vertically
+print(np.hstack((multinumber8, multinumber9)))  # Stack the arrays horizontally
+
+numbers10 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])  # 2-dimensional array
+evens = numbers10[numbers10 % 2 == 0]  # Get the even numbers
+print(evens)  # [2 4 6 8]
+print(evens[evens > 4])  # [6 8] # Get the even numbers that are greater than 4
