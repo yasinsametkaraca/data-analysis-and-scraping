@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np  # numpy used for working with arrays. Mathematically, it is used for linear algebra, fourier transform, and matrices.
 
 py_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]  # Python list
 np_array1 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])  # Numpy array
