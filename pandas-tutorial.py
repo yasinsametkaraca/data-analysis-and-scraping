@@ -1,5 +1,6 @@
 import pandas as pd  # Pandas is a data analysis library. It is used to import data from csv file. It is used to create dataframes. It is used to create series. It is used to create dataframes from dictionaries.
 import numpy as np
+from numpy.random import randn  # Numpy is a library for scientific computing. It is used to create arrays. It is used to create random numbers.
 
 pandas_series = pd.Series([300, 200, 100])  # Create a series from a list. The list contains 3 elements. Indexes are automatically created. Indexes are 0, 1, 2. Values are 300, 200, 100.
 print(type(pandas_series))  # Print the type of the series. It is pandas.core.series.Series.
@@ -56,4 +57,149 @@ print(df)  # Print the dataframe. The dataframe contains 4 rows and 2 columns. T
 # 1        2       3
 # 2        0       7
 # 3        1       2
+
+df = pd.DataFrame()
+print(df)  # Print the dataframe. The dataframe is empty. The dataframe is 2-dimensional. The dataframe has 0 rows and 0 columns. The dataframe has 0 indexes. The dataframe has 0 columns. The type of the dataframe is object.
+
+data = [['Sarah', 90], ['John', 80], ['Mike', 70], ['Kate', 60]]  # Create a list. The list contains 4 elements. Values are ['Sarah', 90], ['John', 80], ['Mike', 70], ['Kate', 60].
+df = pd.DataFrame(data, index=['a', 'b', 'c', 'd'], columns=['Name', 'Score'], dtype=float)  # Create a dataframe from a list. The list contains 4 elements. Values are ['Sarah', 90], ['John', 80], ['Mike', 70], ['Kate', 60]. Columns are manually created. Columns are Name, Score. Indexes are manually created. Indexes are a, b, c, d.
+print(df)  # Print the dataframe. The dataframe contains 4 rows and 2 columns. The dataframe is 2-dimensional. The dataframe has 4 indexes. The dataframe has 2 columns. Columns are Name, Score. The type of the dataframe is object.
+#     Name  Score
+# a  Sarah   90.0
+# b   John   80.0
+# c   Mike   70.0
+# d   Kate   60.0
+
+dict1 = {'Name': ['Sarah', 'John', 'Mike', 'Kate'], 'Score': [90, 80, 70, 60]}  # Create a dictionary. The dictionary contains 2 elements. Keys are Name, Score. Values are ['Sarah', 'John', 'Mike', 'Kate'], [90, 80, 70, 60].
+df = pd.DataFrame(dict1, index=['a', 'b', 'c', 'd'])  # Create a dataframe from a dictionary. The dictionary contains 2 elements. Keys are Name, Score. Values are ['Sarah', 'John', 'Mike', 'Kate'], [90, 80, 70, 60]. Indexes are manually created. Indexes are a, b, c, d.
+print(df)  # Print the dataframe. The dataframe contains 4 rows and 2 columns. The dataframe is 2-dimensional. The dataframe has 4 indexes. The dataframe has 2 columns. Columns are Name, Score. The type of the dataframe is object.
+#   Name  Score
+# a  Sarah     90
+# b   John     80
+# c   Mike     70
+# d   Kate     60
+print(df['Name'])  # Print the column Name of the dataframe. The column Name contains 4 elements. The elements are Sarah, John, Mike, Kate. The type of the elements is object.
+# a    Sarah
+# b     John
+# c     Mike
+# d     Kate
+# Name: Name, dtype: object
+
+dict_list = [
+    {'Name': 'Sarah', 'Score': 90},
+    {'Name': 'John', 'Score': 80},
+    {'Name': 'Mike', 'Score': 70},
+    {'Name': 'Kate', 'Score': 60}
+]
+df = pd.DataFrame(dict_list, index=['a', 'b', 'c', 'd'])  # Create a dataframe from a list of dictionaries. The list contains 4 elements. Values are {'Name': 'Sarah', 'Score': 90}, {'Name': 'John', 'Score': 80}, {'Name': 'Mike', 'Score': 70}, {'Name': 'Kate', 'Score': 60}. Indexes are manually created. Indexes are a, b, c, d.
+print(df)  # Print the dataframe. The dataframe contains 4 rows and 2 columns. The dataframe is 2-dimensional. The dataframe has 4 indexes. The dataframe has 2 columns. Columns are Name, Score. The type of the dataframe is object.
+#     Name  Score
+# a  Sarah     90
+# b   John     80
+# c   Mike     70
+# d   Kate     60
+
+print("----------------------------------------------------------------------------------------------------------------------")
+
+df = pd.read_csv('survey.csv')  # Read a csv file. To read json file, use pd.read_json(). To read excel file, use pd.read_excel(). To read sql file, use pd.read_sql(). To read html file, use pd.read_html(). To read clipboard, use pd.read_clipboard(). To read python pickle object, use pd.read_pickle().
+print(df)
+
+print("----------------------------------------------------------------------------------------------------------------------")
+
+
+df = pd.DataFrame(randn(3, 3), index=['a', 'b', 'c'], columns=['x', 'y', 'z'])  # Create a dataframe from a numpy array. The numpy array contains 3 rows and 3 columns. The numpy array is 2-dimensional. The numpy array has 3 indexes. Indexes are a, b, c. The numpy array has 3 columns. Columns are x, y, z.
+print(df)
+#           x         y         z
+# a  0.250034  0.370692 -0.947904
+# b  1.736494 -0.571718 -0.594398
+# c  1.189452  1.430620 -0.131545
+print(df['x'])  # Print the column x of the dataframe. The column x contains 3 elements. The elements are 0.250034, 1.736494, 1.189452. The type of the elements is float64.
+# a    0.250034
+# b    1.736494
+# c    1.189452
+# Name: x, dtype: float64
+print(df[['x', 'y']])  # Print the columns x, y of the dataframe. The columns x, y contain 3 elements. The elements are 0.250034, 1.736494, 1.189452, 0.370692, -0.571718, 1.430620. The type of the elements is float64.
+#           x         y
+# a  0.250034  0.370692
+# b  1.736494 -0.571718
+# c  1.189452  1.430620
+
+#  While using the loc command, we specify the row or column name, while in the iloc command we specify the index number of the row or column.
+print(df.loc['a'])  # Print the row a of the dataframe. The row a contains 3 elements. The elements are 0.250034, 0.370692, -0.947904. The type of the elements is float64. Loc is used to access a group of rows and columns by label(s) or a boolean array.
+# x    0.250034
+# y    0.370692
+# z   -0.947904
+print(df.loc[['a', 'b'], 'x'])  # Print the rows a, b of the column x of the dataframe. The rows a, b of the column x contain 2 elements. The elements are 0.250034, 1.736494. The type of the elements is float64.
+# a    0.250034
+# b    1.736494
+print(df.loc[:, 'x'])  # loc["row", "column"]  # loc["row"]  # loc[:, "column"]
+#           x
+# a  0.250034
+# b  1.736494
+# c  1.189452
+print(df.loc[:, 'x': 'z'])  # Print the columns x, y, z of the dataframe. The columns x, y, z contain 3 elements. The elements are 0.250034, 1.736494, 1.189452, 0.370692, -0.571718, 1.430620, -0.947904, -0.594398, -0.131545. The type of the elements is float64.
+#           x         y         z
+# a  0.250034  0.370692 -0.947904
+# b  1.736494 -0.571718 -0.594398
+# c  1.189452  1.430620 -0.131545
+print(df.loc[['a', 'b'], ['x', 'y']])  # Print the rows a, b of the columns x, y of the dataframe. The rows a, b of the columns x, y contain 4 elements. The elements are 0.250034, 1.736494, 0.370692, -0.571718. The type of the elements is float64.
+#           x         y
+# a  0.250034  0.370692
+# b  1.736494 -0.571718
+print(df.loc['a':'c', :'y'])  # Print the rows a, b, c of the columns x, y of the dataframe. The rows a, b, c of the columns x, y contain 6 elements. The elements are 0.250034, 1.736494, 1.189452, 0.370692, -0.571718, 1.430620. The type of the elements is float64.
+#           x         y
+# a  0.250034  0.370692
+# b  1.736494 -0.571718
+# c  1.189452  1.430620
+
+print(df.iloc[0])  # Print the row 0 of the dataframe. The row 0 contains 3 elements. The elements are 0.250034, 0.370692, -0.947904. The type of the elements is float64. Iloc is used to access a group of rows and columns by integer position(s) or a boolean array.
+# x    0.250034
+# y    0.370692
+# z   -0.947904
+print(df.iloc[[0, 1], 0])  # Print the rows 0, 1 of the column 0 of the dataframe. The rows 0, 1 of the column 0 contain 2 elements. The elements are 0.250034, 1.736494. The type of the elements is float64.
+# a    0.250034
+# b    1.736494
+print(df.iloc[:, 0])  # iloc["row", "column"]  # iloc["row"]  # iloc[:, "column"]
+# a    0.250034
+# b    1.736494
+# c    1.189452
+print(df.iloc[:, 0: 3])  # Print the columns 0, 1, 2 of the dataframe. The columns 0, 1, 2 contain 3 elements. The elements are 0.250034, 1.736494, 1.189452, 0.370692, -0.571718, 1.430620, -0.947904, -0.594398, -0.131545. The type of the elements is float64.
+#           x         y         z
+# a  0.250034  0.370692 -0.947904
+# b  1.736494 -0.571718 -0.594398
+# c  1.189452  1.430620 -0.131545
+
+print(df.loc['a', 'x'])  # Print the element of the row a and the column x of the dataframe. The element is 0.250034. The type of the element is float64.
+# 0.250034
+
+print("--------------------------------------------------------------------------------------------------------")
+
+df["column4"] = pd.Series(randn(3), ["a", "b", "c"])  # Add a new column to the dataframe. The new column is column4. The new column contains 3 elements. The elements are 0.132003, 0.243905, 0.266883. The type of the elements is float64.
+print(df)
+#           x         y         z   column4
+# a  0.250034  0.370692 -0.947904  0.132003
+# b  1.736494 -0.571718 -0.594398  0.243905
+# c  1.189452  1.430620 -0.131545  0.266883
+df["column5"] = df["x"] + df["y"]  #  Add a new column to the dataframe. The new column is column5. The new column contains 3 elements. The elements are 0.620726, 1.164776, 2.620072. The type of the elements is float64.
+print(df)
+
+result = df.drop("column5", axis=1)  # Delete the column5 from the dataframe. The column5 contains 3 elements. The elements are 0.620726, 1.164776, 2.620072. The type of the elements is float64. Axis 1 means column. Axis 0 means row.
+print(result)  # The column5 is deleted from the dataframe. Original dataframe is not changed.
+#           x         y         z   column4
+# a  0.250034  0.370692 -0.947904  0.132003
+# b  1.736494 -0.571718 -0.594398  0.243905
+# c  1.189452  1.430620 -0.131545  0.266883
+print(df)  # The column5 is not deleted from the dataframe. Original dataframe is not changed.
+#           x         y         z   column4   column5
+# a  0.250034  0.370692 -0.947904  0.132003  0.620726
+# b  1.736494 -0.571718 -0.594398  0.243905  1.164776
+# c  1.189452  1.430620 -0.131545  0.266883  2.620072
+df.drop("column5", axis=1, inplace=True)  # Delete the column5 from the dataframe. Inplace=True means the original dataframe is changed. Inplace=False means the original dataframe is not changed. Result =
+print(df)  # The column5 is deleted from the dataframe. Original dataframe is changed.
+#           x         y         z   column4
+# a  0.250034  0.370692 -0.947904  0.132003
+# b  1.736494 -0.571718 -0.594398  0.243905
+# c  1.189452  1.430620 -0.131545  0.266883
+
+
 
