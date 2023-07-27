@@ -201,5 +201,83 @@ print(df)  # The column5 is deleted from the dataframe. Original dataframe is ch
 # b  1.736494 -0.571718 -0.594398  0.243905
 # c  1.189452  1.430620 -0.131545  0.266883
 
+print("--------------------------------------------------------------------------------------------------------")
+
+data = np.random.randint(10, 100, 75).reshape(15, 5)  # Create a 15x5 array. The array contains 75 elements. The elements are 10, 11, 12, ..., 98, 99. The type of the elements is int64.
+print(data)
+df = pd.DataFrame(data, columns=["column1", "column2", "column3", "column4", "column5"])  # Create a dataframe. The dataframe contains 15 rows and 5 columns. The dataframe contains 75 elements. The elements are 10, 11, 12, ..., 98, 99. The type of the elements is int64.
+print(df)
+print(df.columns)  # Get the column names of the dataframe. The column names are column1, column2, column3, column4, column5. The type of the column names is Index. # Index(['column1', 'column2', 'column3', 'column4', 'column5'], dtype='object')
+print(df.head())  # Get the first 5 rows of the dataframe. The first 5 rows contain 5 elements.
+#    column1  column2  column3  column4  column5
+# 0       64       16       11       85       53
+# 1       49       28       17       73       32
+# 2       90       39       87       53       34
+# 3       97       46       99       27       48
+# 4       99       13       84       49       30
+print(df.head(3))  # Get the first 3 rows of the dataframe. The first 3 rows contain 3 elements.
+print(df.tail())  # Get the last 5 rows of the dataframe. The last 5 rows contain 5 elements.
+print(df.tail(3))  # Get the last 3 rows of the dataframe. The last 3 rows contain 3 elements.
+print(df["column1"].head())  # Get the first 5 elements of the column1 of the dataframe. The column1 contains 15 elements.
+# 0    94
+# 1    36
+# 2    72
+# 3    57
+# 4    19
+print(df[["column1", "column2"]].head())  # Get the first 5 elements of the column1 and column2 of the dataframe. The column1 and column2 contain 15 elements.
+print(df[0:2])  # Get the first 2 rows of the dataframe. The first 2 rows contain 5 elements.
+print(df[5:15][["column1", "column2"]].head())  # Get the first 5 elements of the column1 and column2 of the dataframe. The column1 and column2 contain 10 elements.
+# column1  column2
+# 5       59       92
+# 6       89       13
+# 7       99       64
+# 8       95       44
+# 9       36       92
+print(df > 50)  # Get the boolean values of the dataframe. The dataframe contains 15 rows and 5 columns. The dataframe contains 75 elements. The elements are True or False. The type of the elements is bool.
+#    column1  column2  column3  column4  column5
+# 0     True    False    False     True     True
+# 1    False    False    False     True    False
+# 2     True    False     True     True    False
+# 3     ....................
+print(df[df > 50])  # Get the elements of the dataframe. The dataframe contains 15 rows and 5 columns. The dataframe contains 75 elements. The elements are 10, 11, 12, ..., 98, 99. The type of the elements is int64.
+#    column1  column2  column3  column4  column5
+# 0     64.0      NaN      NaN     85.0     53.0
+# 1      NaN      NaN      NaN     73.0      NaN
+# 2     90.0      NaN     87.0     53.0      NaN
+# 3     97.0      NaN     99.0      NaN      NaN
+# 4     .........
+print(df[df["column1"] > 50])   # Returns rows with records greater than 50 in column1.
+#    column1  column2  column3  column4  column5
+# 0       64       16       11       85       53
+# 2       90       39       87       53       34
+# 3       97       46       99       27       4
+# 5       59       92       10       11       98
+print(df[df["column1"] > 50]["column1"])  # Returns column1 with records greater than 50 in column1.
+# 0    64
+# 2    90
+# 3    97
+# 5    59
+# Name: column1, dtype: int64
+print(df[(df["column1"] > 50) & (df["column1"] < 70)])  # Returns rows with records greater than 50 and less than 70 in column1.
+#    column1  column2  column3  column4  column5
+# 0       64       16       11       85       53
+# 5       59       92       10       11       98
+print(df[(df["column1"] > 50) & (df["column1"] < 70)][["column1", "column2"]])  # Returns column1 and column2 with records greater than 50 and less than 70 in column1.
+#    column1  column2
+# 0       64       16
+# 5       59       92
+print(df.query("column1 > 50 & column1 < 70"))  # Returns rows with records greater than 50 and less than 70 in column1.
+#    column1  column2  column3  column4  column5
+# 0       64       16       11       85       53
+# 5       59       92       10       11       98
+print(df.query("column1 > 50 & column2 < 70")[["column1", "column2"]])  # Returns column1 and column2 with records greater than 50 and less than 70 in column1.
+#    column1  column2
+# 0       64       16
+# 5       59       92
+print(df.query("column1 > 50 & column1 < 70").query("column2 > 50 & column2 < 70"))  # Returns rows with records greater than 50 and less than 70 in column1 and column2.
+#    column1  column2  column3  column4  column5
+# 5       59       92       10       11       98
+
+
 
 
