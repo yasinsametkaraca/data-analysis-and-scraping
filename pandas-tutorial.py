@@ -810,5 +810,23 @@ print(df.pivot_table(index="Month", columns="Category", values="Amount"))  # Cre
 # May          50          500
 
 
+# Read a CSV file.
+df = pd.read_csv("pokemon.csv")
+
+
+def attack_power(attack, Sp_atk):
+    if attack + Sp_atk > 180:
+        return "Strong"
+    else:
+        return "Weak"
+
+
+df["Attacker"] = df[["Attack", "Sp. Atk"]].apply(lambda x: attack_power(x["Attack"], x["Sp. Atk"]), axis=1)  # Create a new column named "Attacker" and apply the attack_power function to each row of the dataframe.
+print(df.head(5))
+
+#  vectorize() function is used to apply a function to each element of a dataframe. Vectorize method is faster than apply method.
+df["Attacker"] = np.vectorize(attack_power)(df["Attack"], df["Sp. Atk"])  # Create a new column named "Attacker" and apply the attack_power function to each row of the dataframe.
+print(df.head(5))
+
 
 

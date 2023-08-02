@@ -32,5 +32,3 @@ print(df[df['Genre'].str.endswith('Drama')][['Genre', 'Rating count']])  # Title
 print("--------------------")
 
 print(df[(df['Genre'].str.len() > 10) & (df['Title'].str.startswith('The W'))][['Title', 'Genre', 'Rating count']])  # Title and Rating count columns where Genre length > 10 and Title starts with The W
-
-
