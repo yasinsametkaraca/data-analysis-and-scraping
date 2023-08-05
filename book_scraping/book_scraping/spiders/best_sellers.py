@@ -9,7 +9,7 @@ class BestSellersSpider(scrapy.Spider):
     def start_requests(self):
         yield scrapy.Request(url="https://www.kidega.com/cok-satanlar", callback=self.parse, headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
-        })  # to set the user agent. If the user agent is not set, the website will block the request. So we need to set the user agent.
+        })  # to set the user agent. If the user agent is not set, the website will block the request. So we need to set the user agent. We can set the user agent in settings.py file. But if useragent changes in some requests, we can also set the user agent in the start_requests method.
 
     def parse(self, response):
         books = response.xpath("//ul[@class='emosInfinite product-list-grid view-box']/li/div")
