@@ -2,7 +2,7 @@ import scrapy
 from scrapy_splash import SplashRequest
 
 
-#  when we disabled the javascript in the browser, we can see that the quotes are not loaded. So, we need to use SplashRequest to render the page and then scrape the data.
+#  when we disabled the javascript in the browser, we can see that the quotes are not loaded. So, we need to use SplashRequest to render the page and then scrape the project_data.
 class SplashExSpider(scrapy.Spider):
     name = "splash_ex"
     allowed_domains = ["quotes.toscrape.com"]

@@ -1,5 +1,5 @@
 import \
-    pandas as pd  # Pandas is a data analysis library. It is used to import data from csv file. It is used to create dataframes. It is used to create series. It is used to create dataframes from dictionaries.
+    pandas as pd  # Pandas is a project_data analysis library. It is used to import project_data from csv file. It is used to create dataframes. It is used to create series. It is used to create dataframes from dictionaries.
 import numpy as np
 from numpy.random import \
     randn  # Numpy is a library for scientific computing. It is used to create arrays. It is used to create random numbers.
@@ -61,8 +61,8 @@ print(pandas_series[
 print(
     "----------------------------------------------------------------------------------------------------------------------")
 
-# data frame is a 2-dimensional data structure. It is used to store data in rows and columns. It is used to import data from csv file. It is used to create dataframes from dictionaries. It is used to create dataframes from lists. It is used to create dataframes from numpy arrays.
-# Series is a 1-dimensional data structure.
+# project_data frame is a 2-dimensional project_data structure. It is used to store project_data in rows and columns. It is used to import project_data from csv file. It is used to create dataframes from dictionaries. It is used to create dataframes from lists. It is used to create dataframes from numpy arrays.
+# Series is a 1-dimensional project_data structure.
 
 series1 = pd.Series([3, 2, 0,
                      1])  # Create a series from a list. The list contains 4 elements. Indexes are automatically created. Indexes are 0, 1, 2, 3. Values are 3, 2, 0, 1.
@@ -342,7 +342,7 @@ print(df.query("column1 > 50 & column1 < 70").query(
 # 5       59       92       10       11       98
 
 print(
-    "--------------------------------------------------")  # groupby method: It is used to group the data according to the specified column. It is used with aggregate functions. It is used with aggregate functions such as sum, mean, max, min, count, etc.
+    "--------------------------------------------------")  # groupby method: It is used to group the project_data according to the specified column. It is used with aggregate functions. It is used with aggregate functions such as sum, mean, max, min, count, etc.
 
 person_dict = {
     "name": ["ali", "veli", "kenan", "hilal", "ayse", "evren"],
@@ -569,16 +569,16 @@ print(df.dropna(
 # f     11.0     28.0     29.0      NaN
 # h     10.0     10.0     10.0      NaN
 
-print(df.fillna(value="no data"))  # Fill the NaN values with the "no data" value.
+print(df.fillna(value="no project_data"))  # Fill the NaN values with the "no project_data" value.
 #    column1  column2  column3  column4
-# a     96.0     23.0     77.0  no data
-# b  no data  no data  no data     30.0
-# c     39.0     95.0     59.0  no data
-# d  no data  no data  no data     51.0
-# e     23.0     39.0     89.0  no data
-# f     48.0     49.0     47.0  no data
-# g  no data  no data  no data     17.0
-# h     44.0     42.0     21.0  no data
+# a     96.0     23.0     77.0  no project_data
+# b  no project_data  no project_data  no project_data     30.0
+# c     39.0     95.0     59.0  no project_data
+# d  no project_data  no project_data  no project_data     51.0
+# e     23.0     39.0     89.0  no project_data
+# f     48.0     49.0     47.0  no project_data
+# g  no project_data  no project_data  no project_data     17.0
+# h     44.0     42.0     21.0  no project_data
 print(df.fillna(value=1))  # Fill the NaN values with the 1 value.
 #    column1  column2  column3  column4
 # a     64.0     53.0     44.0      1.0

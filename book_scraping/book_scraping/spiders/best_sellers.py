@@ -16,7 +16,7 @@ class BestSellersSpider(scrapy.Spider):
         for book in books:
             yield {
                 "title": book.xpath(".//h3[@class='book-name']/text()").get(),
-                "image": book.xpath(".//div[@class='prd-image image']/div/img/@data-original").get(),
+                "image": book.xpath(".//div[@class='prd-image image']/div/img/@project_data-original").get(),
                 "author": book.xpath(".//div[@class='authorArea']/div/a/span[@class='manufacturer-name']/text()").get(),
                 "publisher": book.xpath(".//div[@class='publisherArea']//span[@class='distributor-name']/text()").get(),
                 "discount_rate": book.xpath(".//div[@class='prd-price']//span[@class='redDiscont']/text()").get(),
