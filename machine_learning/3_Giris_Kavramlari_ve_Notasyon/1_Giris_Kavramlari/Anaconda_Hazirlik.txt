@@ -1,0 +1,21 @@
+Sanal Ortam Listesi:
+conda env list
+
+Yeni bir virtual environment yaratma:
+conda create --name ml
+
+Virtual Env'yi aktive etme:
+conda activate ml
+
+# JupyterLab yükleme
+conda install jupyterlab
+conda install -c conda-forge jupyterlab
+
+# Paketleri yükleme
+conda install pandas matplotlib
+
+# Scikit-Learn yükleme
+conda install -c anaconda scikit-learn
+
+# JupyterLab'ı başlatmak
+jupyter lab
